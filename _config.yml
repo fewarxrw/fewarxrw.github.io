@@ -1,0 +1,35 @@
+title: "Zelustek"
+description: "Notes on AI, systems, and building things."
+url: ""
+baseurl: ""
+lang: "zh-CN"
+timezone: "Asia/Shanghai"
+
+author:
+  name: "Zelustek"
+  email: ""
+  github: ""
+  x: ""
+
+permalink: /:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

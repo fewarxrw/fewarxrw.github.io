@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<section class="intro">
+  <p class="eyebrow">Personal Blog</p>
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+</section>
+
+<section class="post-list" aria-label="Recent posts">
+  <h2>Recent Posts</h2>
+
+  {% if site.posts.size > 0 %}
+    {% for post in site.posts limit: 8 %}
+      <article class="post-preview">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        {% if post.excerpt %}
+          <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  {% else %}
+    <p>还没有文章。把 Markdown 文件放进 <code>_posts</code> 目录即可开始写作。</p>
+  {% endif %}
+</section>
