@@ -4,11 +4,22 @@ title: "About"
 permalink: /about/
 ---
 
-这里写你的个人介绍。
+## 中文
 
-可以写：
+我关注的方向是 Edge AI 的产品和算法。
 
-- 你关注的方向
-- 你正在做的项目
-- 你的联系方式
-- 你希望这个博客长期记录什么
+我正在做的项目是基于 MediaTek 平台的 SOM（System on Module），以及创新的 AI 智能硬件。
+
+你可以在 [GitHub](https://github.com/fewarxrw) 联系我。
+
+这个 blog 会长期记录产品、市场观察和个人感悟。
+
+## English
+
+I focus on Edge AI products and algorithms.
+
+I am currently working on SOMs (System on Modules) based on MediaTek platforms, as well as innovative AI hardware products.
+
+You can contact me on [GitHub](https://github.com/fewarxrw).
+
+This blog is a long-term record of product thinking, market observations, and personal reflections.

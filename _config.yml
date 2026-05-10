@@ -8,7 +8,7 @@ timezone: "Asia/Shanghai"
 author:
   name: "Yaoming"
   email: ""
-  github: ""
+  github: "fewarxrw"
   x: ""
 
 permalink: /:year/:month/:day/:title/
