@@ -8,15 +8,17 @@ layout: default
   <p>{{ site.description }}</p>
 </section>
 
-<section class="post-list" aria-label="Recent posts">
-  <h2>Recent Posts</h2>
+<section class="post-list" aria-label="Latest posts">
+  <h2>Latest / 最新文章</h2>
 
   {% if site.posts.size > 0 %}
     {% for post in site.posts limit: 8 %}
       <article class="post-preview">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.excerpt %}
+        {% if post.description %}
+          <p>{{ post.description }}</p>
+        {% elsif post.excerpt %}
           <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
         {% endif %}
       </article>
