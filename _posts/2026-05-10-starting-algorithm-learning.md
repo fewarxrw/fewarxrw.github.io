@@ -1,0 +1,14 @@
+---
+title: "算法学习的起点"
+date: 2026-05-10
+categories: [notes]
+tags: [algorithm, machine-learning, deep-learning]
+---
+
+## 中文
+
+《白话机器学习的数学》和《白话深度学习的数学》是开始算法学习的优秀教材。
+
+## English
+
+*The Math of Machine Learning in Plain Language* and *The Math of Deep Learning in Plain Language* are excellent textbooks for starting to learn algorithms.
