@@ -1,13 +1,14 @@
 ---
 title: "Qwen3.8-27B 本地能力实测报告 / Local Evaluation Report of Qwen3.8-27B"
 date: 2026-08-15
-description: "基于 96GB 单卡本地环境的单机小样本实测：编程、中文公文、Excel 表格与推理性能。"
+description: "基于 96GB 单卡本地环境的单机小样本实测：编程、中文公文、Excel 表格与推理性能（含原始截图证据，原图不做文字翻译）。"
 categories: [notes]
 tags: [llm, qwen, benchmark, local-deployment, evaluation]
 ---
 
-> 本文为原报告的扩充版，采用中英对照排版；
-> 图片与截图已省略，只保留可复核的文本与数值。
+> 本文为原报告扩充版，采用中英对照排版。  
+> 文中插图为原始截图，文字内容未做翻译或改写，仅作复核证据使用。  
+> This is an extended bilingual version of the original report. Embedded figures are raw screenshots; image text is not translated.
 
 ## 一、总结 / Executive Summary
 
@@ -48,6 +49,8 @@ The score profile is stable enough for internal workflows that have clear constr
 - CPU / 内存 / Memory: 60 核 / 120 线程，系统内存 250.92 GiB
 - 模型文件 / Model size: 51.747 GiB（18 个分片）
 
+![图5：本地环境与系统资源证据 / Figure 5: Environment and system evidence]({{ '/assets/images/evidence_environment.png' | relative_url }})
+
 This setup was intentionally single-machine and hardware-faithful: a realistic local deployment footprint rather than an over-optimized cloud benchmark.
 
 ## 三、方法与评测流程 / Methodology
@@ -86,6 +89,8 @@ This setup was intentionally single-machine and hardware-faithful: a realistic l
 
 This indicates reliable multi-step tool usage for common bugfix workflows, with a concrete weakness in exception-handling guards for malformed input ranges. In production, add negative-case tests or schema-based validation before allowing model-produced changes.
 
+![图1：编程任务公开与隐藏 pytest 原始摘要（25/26） / Figure 1: Coding public/hidden pytest summary (25/26)]({{ '/assets/images/evidence_programming_tests.png' | relative_url }})
+
 ### 2. 中文公文 / Chinese official writing
 
 三项任务均全量通过：
@@ -104,6 +109,8 @@ This indicates reliable multi-step tool usage for common bugfix workflows, with 
 
 The document outputs were highly consistent with enterprise writing constraints under deterministic checks. This is strongest evidence that the model performs well when output constraints are clear and machine-checkable.
 
+![图2：中文公文规则检查与原文节选 / Figure 2: Official document rule checks and source excerpts]({{ '/assets/images/evidence_official_document.png' | relative_url }})
+
 ### 3. Excel 自动化 / Excel automation
 
 任务 `sales_workbook` 重算后 14/14（100%）。
@@ -118,6 +125,8 @@ The document outputs were highly consistent with enterprise writing constraints 
 该结果说明模型可将自然语言需求落到 openpyxl 脚本层，并输出可打开可复用的 xlsx 文件。
 
 This is a practical signal for internal office automation (lightweight reporting). It is not a proof of correctness on complex multi-sheet enterprise templates.
+
+![图3：Excel 区域销售与毛利汇总看板 / Figure 3: Sales and gross margin dashboard output]({{ '/assets/images/spreadsheet_region_summary.png' | relative_url }})
 
 ### 4. 推理性能 / Inference Performance
 
@@ -137,6 +146,8 @@ This is a practical signal for internal office automation (lightweight reporting
 
 Performance is suitable for local interactive workloads and bounded throughput use cases, but sustained high-load operation should incorporate queueing, rate limits, and thermal/power monitoring.
 
+![图4：推理性能与资源采样图 / Figure 4: Inference performance and resource sampling metrics]({{ '/assets/images/evidence_performance_metrics.png' | relative_url }})
+
 ## 五、风险边界 / Limitations and Risk Controls
 
 1. 样本规模较小：2 个编程任务、3 个公文任务、1 个 Excel 任务，不可外推到所有真实业务场景。
@@ -153,7 +164,7 @@ For production use, the safer deployment pattern is: deterministic schema valida
 - 保持这篇为“可复核但非官方 benchmark”的标签。
 - 在标题中明确“本地单样本实测”与“非公开基准对比”。
 - 在正文末尾附上可复核日志路径（或说明仅内部可访问）。
-- 强调“图片在此版本省略，仅保留关键文本指标”。
+- 强调“图片为原始截图（未翻译），用于证据复核”。
 
 If you publish this article, keep the context explicit: *single-machine, local, and limited-sample*. This avoids over-claiming and makes the report credible.
 
